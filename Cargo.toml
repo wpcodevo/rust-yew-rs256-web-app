@@ -1,5 +1,5 @@
 [package]
-name = "rust-yew-jwt-auth"
+name = "rust-yew-rs256-web-app"
 version = "0.1.0"
 edition = "2021"
 
