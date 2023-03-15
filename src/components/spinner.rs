@@ -2,36 +2,26 @@ use yew::prelude::*;
 
 #[derive(Debug, Properties, PartialEq)]
 pub struct Props {
-    pub width: Option<String>,
-    pub height: Option<String>,
-    pub color: Option<String>,
-    pub bg_color: Option<String>,
+    #[prop_or("1.25rem".to_string())]
+    pub width: String,
+    #[prop_or("1.25rem".to_string())]
+    pub height: String,
+    #[prop_or("text-gray-200".to_string())]
+    pub color: String,
+    #[prop_or("fill-blue-600".to_string())]
+    pub bg_color: String,
 }
 
 #[function_component(Spinner)]
 pub fn spinner_component(props: &Props) -> Html {
-    let width = props.width.clone().unwrap_or_else(|| "1.25rem".to_string());
-    let height = props
-        .height
-        .clone()
-        .unwrap_or_else(|| "1.25rem".to_string());
-    let color = props
-        .color
-        .clone()
-        .unwrap_or_else(|| "text-gray-200".to_string());
-    let bg_color = props
-        .bg_color
-        .clone()
-        .unwrap_or_else(|| "fill-blue-600".to_string());
-
     html! {
     <svg
       role="status"
       class={format!(
         "mr-2 {} animate-spin dark:text-gray-600 {} h-5",
-        color, bg_color
+        props.color.clone(), props.bg_color.clone()
       )}
-      style={format!("height:{};width:{}", width, height)}
+      style={format!("height:{};width:{}", props.width.clone(), props.height.clone())}
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -7,7 +7,8 @@ use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
 pub struct Props {
-    pub input_type: Option<String>,
+    #[prop_or("text".to_string())]
+    pub input_type: String,
     pub label: String,
     pub name: String,
     pub input_ref: NodeRef,
@@ -18,10 +19,6 @@ pub struct Props {
 
 #[function_component(FormInput)]
 pub fn form_input_component(props: &Props) -> Html {
-    let input_type = props
-        .input_type
-        .clone()
-        .unwrap_or_else(|| "text".to_string());
     let val_errors = props.errors.borrow();
     let errors = val_errors.field_errors().clone();
     let empty_errors = vec![];
@@ -58,7 +55,7 @@ pub fn form_input_component(props: &Props) -> Html {
         {props.label.clone()}
       </label>
       <input
-        type={input_type}
+        type={props.input_type.clone()}
         placeholder=""
         class="block w-full rounded-2xl appearance-none focus:outline-none py-2 px-4"
         ref={props.input_ref.clone()}

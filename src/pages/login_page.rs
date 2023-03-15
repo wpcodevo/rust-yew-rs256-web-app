@@ -171,7 +171,7 @@ pub fn login_page() -> Html {
             </div>
             <LoadingButton
               loading={store.page_loading}
-              text_color={Some("text-ct-blue-600".to_string())}
+              text_color={"text-ct-blue-600"}
             >
               {"Login"}
             </LoadingButton>
